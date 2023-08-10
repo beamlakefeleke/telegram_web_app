@@ -40,14 +40,17 @@ function App() {
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
-    // Assuming you have a Telegram API object named 'tele'
 
-// Set up your views/pages
-
-// Create the inline keyboard with the "View Order" button
+    tele.MainButton.text = "view order";
+    tele.MainButton.show();
+if (tele.MainButton.text === "view order"){
+    
 const inlineKeyboard = [
   [
-    { text: "View Order", callback_data: "view_order" },
+    { text: "View Order"
+    , callback_data: "view_order",
+    
+  },
   ],
 ];
 
@@ -57,8 +60,8 @@ tele.on("callback_query", (callbackQuery) => {
   const chatId = callbackQuery.message.chat.id;
 
   if (data === "view_order") {
-    // Here you can navigate to the "view order" page by sending a new message
-    // with the order details or updating the current message with new content
+    tele.MainButton.openTelegramLink("https://shemeta.co/");
+
     const orderDetails = "Here are your order details...";
     
     // You can choose to edit the current message or send a new message
@@ -80,7 +83,7 @@ tele.sendMessage(838671675, "Click the button to view your order:", {
   },
 });
 
-   
+} 
 
 
     // tele.MainButton.text = "view order";
