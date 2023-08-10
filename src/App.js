@@ -25,9 +25,9 @@ function App() {
   useEffect(() => {
     tele.ready();
   });
-  function mainButtonClickedHandler() {
-    tele.MainButton.openTelegramLink("https://shemeta.co/");
-  }
+  // function mainButtonClickedHandler() {
+  //   tele.MainButton.openTelegramLink("https://shemeta.co/");
+  // }
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
@@ -40,14 +40,55 @@ function App() {
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
-    
+    // Assuming you have a Telegram API object named 'tele'
 
-    tele.MainButton.text = "view order";
-    tele.MainButton.show();
+// Set up your views/pages
+
+// Create the inline keyboard with the "View Order" button
+const inlineKeyboard = [
+  [
+    { text: "View Order", callback_data: "view_order" },
+  ],
+];
+
+// Handle button click events
+tele.on("callback_query", (callbackQuery) => {
+  const data = callbackQuery.data;
+  const chatId = callbackQuery.message.chat.id;
+
+  if (data === "view_order") {
+    // Here you can navigate to the "view order" page by sending a new message
+    // with the order details or updating the current message with new content
+    const orderDetails = "Here are your order details...";
     
-  
-    tele.MainButton.onClick('mainButtonClicked', mainButtonClickedHandler);
-    mainButtonClickedHandler();
+    // You can choose to edit the current message or send a new message
+    // In this example, let's edit the current message
+    tele.editMessageText(orderDetails, {
+      chat_id: chatId,
+      message_id: callbackQuery.message.message_id,
+      reply_markup: {
+        inline_keyboard: inlineKeyboard,
+      },
+    });
+  }
+});
+
+// Initial message with the "View Order" button
+tele.sendMessage(838671675, "Click the button to view your order:", {
+  reply_markup: {
+    inline_keyboard: inlineKeyboard,
+  },
+});
+
+   
+
+
+    // tele.MainButton.text = "view order";
+    // tele.MainButton.show();
+    //user id 838671675
+    
+    // tele.MainButton.onEvent('mainButtonClicked', mainButtonClickedHandler);
+    // mainButtonClickedHandler();
   };
 
   const onRemove = (food) => {
