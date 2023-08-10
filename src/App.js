@@ -45,41 +45,9 @@ function App() {
     tele.MainButton.show();
 if (tele.MainButton.text === "view order"){
     
-const inlineKeyboard = [
-  [
-    { text: "View Order"
-    , callback_data: "view_order",
-    
-  },
-  ],
-];
-
-// Handle button click events
-tele.on("callback_query", (callbackQuery) => {
-  const data = callbackQuery.data;
-  const chatId = callbackQuery.message.chat.id;
-
-  if (data === "view_order") {
-    tele.MainButton.openTelegramLink("https://shemeta.co/");
-
-    const orderDetails = "Here are your order details...";
-    
-    // You can choose to edit the current message or send a new message
-    // In this example, let's edit the current message
-    tele.editMessageText(orderDetails, {
-      chat_id: chatId,
-      message_id: callbackQuery.message.message_id,
-      reply_markup: {
-        inline_keyboard: inlineKeyboard,
-      },
-    });
-  }
-});
-
-// Initial message with the "View Order" button
-tele.sendMessage(838671675, "Click the button to view your order:", {
+tele.sendMessage(838671675, "Click", {
   reply_markup: {
-    inline_keyboard: inlineKeyboard,
+    inline_keyboard: tele.MainButton.openTelegramLink("https://shemeta.co/"),
   },
 });
 
