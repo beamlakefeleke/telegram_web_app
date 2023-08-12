@@ -21,17 +21,7 @@ function App() {
   useEffect(() => {
     tele.ready();
   });
-  window.Telegram.WebApp.onEvent('mainButtonClicked', function(e) {
-    window.Telegram.WebApp.MainButton.showProgress()
-    let req = new XMLHttpRequest();
-  
-    req.onreadystatechange = () => {
-      if (req.readyState === XMLHttpRequest.DONE) {
-          //send order to backend
-          window.Telegram.WebApp.sendData(List)
-      }
-    };
-  })
+ 
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
@@ -48,6 +38,17 @@ function App() {
   
     tele.MainButton.text = "view order";
     tele.MainButton.show();
+    window.Telegram.WebApp.onEvent('mainButtonClicked', function(e) {
+      window.Telegram.WebApp.MainButton.showProgress()
+      let req = new XMLHttpRequest();
+    
+      req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            //send order to backend
+            window.Telegram.WebApp.sendData(List)
+        }
+      };
+    })
     //user id 838671675
 
   };
