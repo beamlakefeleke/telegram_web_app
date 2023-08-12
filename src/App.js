@@ -38,14 +38,14 @@ function App() {
   
     tele.MainButton.text = "view order";
     tele.MainButton.show();
-    window.Telegram.WebApp.onEvent('mainButtonClicked', function(e) {
-      window.Telegram.WebApp.MainButton.showProgress()
+    tele.onEvent('mainButtonClicked', function(e) {
+      tele.MainButton.showProgress()
       let req = new XMLHttpRequest();
     
       req.onreadystatechange = () => {
         if (req.readyState === XMLHttpRequest.DONE) {
             //send order to backend
-            window.Telegram.WebApp.sendData(List)
+            tele.sendData(List)
         }
       };
     })

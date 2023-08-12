@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import "./App.css";
-import List from "./List";
+
 import Card from "./Components/Card/Card";
 
 import Cart from "./Components/Cart/Cart";
@@ -13,23 +13,13 @@ const foods = getData();
 
 const tele = window.Telegram.WebApp;
 
-function App() {
+function List(list) {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     tele.ready();
   });
-  window.Telegram.WebApp.onEvent('mainButtonClicked', function(e) {
-    window.Telegram.WebApp.MainButton.showProgress()
-    let req = new XMLHttpRequest();
-  
-    req.onreadystatechange = () => {
-      if (req.readyState === XMLHttpRequest.DONE) {
-          //send order to backend
-          window.Telegram.WebApp.sendData(List)
-      }
-    };
-  })
+
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
@@ -43,10 +33,6 @@ function App() {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
 
-  
-    tele.MainButton.text = "view order";
-    tele.MainButton.show();
-    //user id 838671675
 
   };
 
@@ -85,5 +71,5 @@ function App() {
 }
 
 
-export default App;
+export default List;
 
