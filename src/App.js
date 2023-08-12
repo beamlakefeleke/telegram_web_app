@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 
-
-
-// import ReactDOM from "react-dom/client";
-// import {Routes, Route, useNavigate} from 'react-router-dom';
 import "./App.css";
-// import List from "./List";
+import List from "./List";
 import Card from "./Components/Card/Card";
 // import Checklist from "./Components/Checklist/Checklist";
 // const { Telegraf } = require("telegraf");
@@ -25,9 +21,17 @@ function App() {
   useEffect(() => {
     tele.ready();
   });
-  // function mainButtonClickedHandler() {
-  //   tele.MainButton.openTelegramLink("https://shemeta.co/");
-  // }
+  window.Telegram.WebApp.onEvent('mainButtonClicked', function(e) {
+    window.Telegram.WebApp.MainButton.showProgress()
+    let req = new XMLHttpRequest();
+  
+    req.onreadystatechange = () => {
+      if (req.readyState === XMLHttpRequest.DONE) {
+          //send order to backend
+          window.Telegram.WebApp.sendData(List)
+      }
+    };
+  })
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
@@ -41,25 +45,11 @@ function App() {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
 
+  
     tele.MainButton.text = "view order";
     tele.MainButton.show();
-if (tele.MainButton.text === "view order"){
-    
-tele.sendMessage(838671675, "Click", {
-  reply_markup: {
-    inline_keyboard: tele.MainButton.openTelegramLink("https://shemeta.co/"),
-  },
-});
-
-} 
-
-
-    // tele.MainButton.text = "view order";
-    // tele.MainButton.show();
     //user id 838671675
-    
-    // tele.MainButton.onEvent('mainButtonClicked', mainButtonClickedHandler);
-    // mainButtonClickedHandler();
+
   };
 
   const onRemove = (food) => {
@@ -84,7 +74,7 @@ tele.sendMessage(838671675, "Click", {
     <>
       {/* <h1 className="heading">Order Food</h1>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/> */}
-      
+
       <div className="cards__container">
         {foods.map((food) => {
           return (
