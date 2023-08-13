@@ -44,7 +44,7 @@ function App() {
         )
       );
       tele.MainButton.text = "view order";
-      tele.MainButton.isVisible = true;
+      tele.MainButton.show();
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
