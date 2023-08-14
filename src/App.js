@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import "./App.css";
-import List from "./List";
+// import List from "./List";
 import Card from "./Components/Card/Card";
 // import Checklist from "./Components/Checklist/Checklist";
 // const { Telegraf } = require("telegraf");
@@ -40,15 +40,9 @@ function App() {
     tele.MainButton.show();
     tele.onEvent('mainButtonClicked', function(e) {
       tele.MainButton.showProgress()
-      let req = new XMLHttpRequest();
-    
-      req.onreadystatechange = () => {
-        if (req.readyState === XMLHttpRequest.DONE) {
-            //send order to backend
-            tele.sendData(List);
-            tele.openTelegramLink("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
-        }
-      };
+      
+      tele.openTelegramLink("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
+      
     })
     //user id 838671675
 
