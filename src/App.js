@@ -85,7 +85,7 @@ function App() {
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
       {foods.map((food) => {
           return (
-            <Card food={food} key={food.id} onAdd={onAdd}  />
+            <Card food={food} key={food.id}   />
           );
         })}
       </div>
