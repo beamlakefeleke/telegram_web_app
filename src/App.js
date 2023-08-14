@@ -22,18 +22,6 @@ function App() {
     tele.ready();
   });
  
-  tele.onEvent('mainButtonClicked', function(e) {
-    tele.MainButton.showProgress()
-    let req = new XMLHttpRequest();
-  
-    req.onreadystatechange = () => {
-      
-          //send order to backend
-          tele.sendData(List)
-      
-    };
-  })
-
 
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
@@ -43,12 +31,25 @@ function App() {
           x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
         )
       );
-      tele.MainButton.text = "view order";
-      tele.MainButton.show();
     } else {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
 
+  
+    tele.MainButton.text = "view order";
+    tele.MainButton.show();
+    tele.onEvent('mainButtonClicked', function(e) {
+      tele.MainButton.showProgress()
+      let req = new XMLHttpRequest();
+    
+      req.onreadystatechange = () => {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            //send order to backend
+            tele.sendData(List);
+            tele.open("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
+        }
+      };
+    })
     //user id 838671675
 
   };
@@ -57,7 +58,6 @@ function App() {
     const exist = cartItems.find((x) => x.id === food.id);
     if (exist.quantity === 1) {
       setCartItems(cartItems.filter((x) => x.id !== food.id));
-      tele.MainButton.isVisible = false;
     } else {
       setCartItems(
         cartItems.map((x) =>
