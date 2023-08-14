@@ -36,14 +36,14 @@ function App() {
     }
 
   
-    tele.MainButton.text = "view order";
+    tele.MainButton.text = "view Order";
     tele.MainButton.show().onClick(()=>{
       document.getElementById("section1").style.display="none";
       var section2 = document.getElementById("section2");
       section2.style.display = "flex";
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
-      tele.MainButton.show(false)
+      tele.MainButton.show(false);
 
      });
     //user id 838671675
