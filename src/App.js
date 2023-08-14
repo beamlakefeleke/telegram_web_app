@@ -6,7 +6,7 @@ import Card from "./Components/Card/Card";
 // import Checklist from "./Components/Checklist/Checklist";
 // const { Telegraf } = require("telegraf");
 // import { webApp } from "telegraf/typings/button";
-// import Cart from "./Components/Cart/Cart";
+import Cart from "./Components/Cart/Cart";
 // import Cafe from "./Components/Cafe/Cafe";
 const { getData } = require("./db/db.js");
 // const { getCafe } = require("./db/dbcafe.js");
@@ -43,6 +43,7 @@ function App() {
       section2.style.display = "flex";
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
+      tele.MainButton.show(false)
 
      });
     //user id 838671675
@@ -62,10 +63,10 @@ function App() {
     }
   };
 
-  // const onCheckout = () => {
-  //   tele.MainButton.text = "Pay :)";
-  //   tele.MainButton.show();
-  // };
+  const onCheckout = () => {
+    tele.MainButton.text = "Pay :)";
+    tele.MainButton.show();
+  };
     
   return (
     <>
@@ -81,7 +82,12 @@ function App() {
       
       <div className="section2" id="section2"  >
       <h1 className="heading">Order Food</h1>
-      {/* <Cart cartItems={cartItems} onCheckout={onCheckout}/> */}
+      <Cart cartItems={cartItems} onCheckout={onCheckout}/>
+      {foods.map((food) => {
+          return (
+            <Card food={food} key={food.id} onAdd={onAdd}  />
+          );
+        })}
       </div>
     </>
   );
