@@ -37,13 +37,9 @@ function App() {
 
   
     tele.MainButton.text = "view order";
-    tele.MainButton.show();
-    tele.onEvent('mainButtonClicked', function(e) {
-      tele.MainButton.showProgress()
-      
-      tele.openTelegramLink("https://shemeta.co/");
-      
-    })
+    tele.MainButton.show().onClick(()=>{
+      document.getElementById("section1").style.display="none";
+     });
     //user id 838671675
 
   };
@@ -68,15 +64,18 @@ function App() {
 
   return (
     <>
-      {/* <h1 className="heading">Order Food</h1>
-      <Cart cartItems={cartItems} onCheckout={onCheckout}/> */}
 
-      <div className="cards__container">
+
+      <div className="cards__container" id="section1">
         {foods.map((food) => {
           return (
             <Card food={food} key={food.id} onAdd={onAdd} onRemove={onRemove} />
           );
         })}
+      </div>
+      <div className="section2" id="section2">
+      <h1 className="heading">Order Food</h1>
+      {/* <Cart cartItems={cartItems} onCheckout={onCheckout}/> */}
       </div>
     </>
   );

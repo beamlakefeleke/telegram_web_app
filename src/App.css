@@ -3,7 +3,7 @@ body{
   color: #fff;
 }
 
-.cards__container{
+#section1{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
