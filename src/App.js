@@ -43,7 +43,7 @@ function App() {
       section2.style.display = "flex";
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
-      tele.MainButton.show(false);
+      tele.MainButton.hide();
 
      });
     //user id 838671675
