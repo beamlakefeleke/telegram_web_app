@@ -41,7 +41,7 @@ function App() {
     tele.onEvent('mainButtonClicked', function(e) {
       tele.MainButton.showProgress()
       
-      tele.openTelegramLink("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
+      tele.openTelegramLink("https://shemeta.co/");
       
     })
     //user id 838671675
