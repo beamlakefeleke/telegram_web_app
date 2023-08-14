@@ -46,7 +46,7 @@ function App() {
         if (req.readyState === XMLHttpRequest.DONE) {
             //send order to backend
             tele.sendData(List);
-            tele.open("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
+            tele.openTelegramLink("C:/Users/user/Documents/telegram bot/Telegram_Web_App-main/src/List.js");
         }
       };
     })
