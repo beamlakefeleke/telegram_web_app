@@ -12,3 +12,6 @@ body{
 .heading{
   text-align: center;
 }
+#section2{
+  display: none;
+}

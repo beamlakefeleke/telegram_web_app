@@ -22,7 +22,7 @@ function App() {
     tele.ready();
   });
  
-  document.getElementById("section2").style.display="none";
+  
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
     if (exist) {
