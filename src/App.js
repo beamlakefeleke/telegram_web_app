@@ -62,7 +62,12 @@ function App() {
       );
     }
   };
+  // const list=(food)=>{
+  // const exist = cartItems.find((x) => x.id === food.id);
+  // if (exist.quantity === 1){
 
+  // }
+  // }
   const onCheckout = () => {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show();
@@ -83,11 +88,9 @@ function App() {
       <div className="section2" id="section2"  >
       <h1 className="heading">Order Food</h1>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
-      {foods.map((food) => {
-          return (
-            <Card food={food} key={food.id}   />
-          );
-        })}
+      {/* {foods.map((food) => {
+         
+        })} */}
       </div>
     </>
   );
