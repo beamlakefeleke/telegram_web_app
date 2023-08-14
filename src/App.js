@@ -39,6 +39,11 @@ function App() {
     tele.MainButton.text = "view order";
     tele.MainButton.show().onClick(()=>{
       document.getElementById("section1").style.display="none";
+      var section2 = document.getElementById("section2");
+      section2.style.display = "flex";
+      section2.style.flexWrap = "wrap";
+      section2.style.justifyContent = "center";
+
      });
     //user id 838671675
 
@@ -61,11 +66,11 @@ function App() {
   //   tele.MainButton.text = "Pay :)";
   //   tele.MainButton.show();
   // };
-
+    
   return (
     <>
 
-
+      
       <div className="cards__container" id="section1">
         {foods.map((food) => {
           return (
@@ -73,7 +78,8 @@ function App() {
           );
         })}
       </div>
-      <div className="section2" id="section2">
+      
+      <div className="section2" id="section2"  >
       <h1 className="heading">Order Food</h1>
       {/* <Cart cartItems={cartItems} onCheckout={onCheckout}/> */}
       </div>
