@@ -5,9 +5,12 @@ const bot = new Telegraf(TOKEN);
 const web_link = "https://charming-biscochitos-054f13.netlify.app/";
 
 bot.start((ctx) =>
-  ctx.reply("Welcome :)))))", {
+  ctx.reply("Let's get started 🍟\n\n Please tap the button below to order your food", {
     reply_markup: {
-      keyboard: [[{ text: "Durger", web_app: { url: web_link } }]],
+      inline_keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
+      
+      keyboard_button: [[{ text: "Durger", web_app: { url: web_link } }]],
+
     },
   })
 );

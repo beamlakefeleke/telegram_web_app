@@ -27,6 +27,13 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      function setThemeClass() {
+          document.documentElement.className = Telegram.WebApp.colorScheme;
+      }
+      Telegram.WebApp.onEvent('themeChanged', setThemeClass);
+      setThemeClass();
+  </script>
     <title>React App</title>
   </head>
   <body>
