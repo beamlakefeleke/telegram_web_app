@@ -55,12 +55,13 @@ function App() {
           section1.style.display = "flex";
           section1.style.flexWrap = "wrap";
           section1.style.justifyContent = "center";
+
           st=1;
             }
           if(st===1){
               tele.WebApp.close();
             }
-        });
+        }).isVisible=false;
       
       
 
