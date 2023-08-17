@@ -72,7 +72,8 @@ function App() {
   const onCheckout = () => {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show().onClick(()=>{
-      if (document.getElementById("section2")===true) {
+      
+      // if (document.getElementById("section2")===true) {
         tele.BackButton.show().onClick(() => {
           document.activeElement && document.activeElement.blur();
           document.getElementById("section2").style.display = "none";
@@ -81,11 +82,10 @@ function App() {
           section1.style.flexWrap = "wrap";
           section1.style.justifyContent = "center";
         });
-      }
-      else{
-        tele.WebApp.close();
-      }
-      
+      // }
+      // else{
+      //   tele.WebApp.close();
+      // }
     });
     
   };
