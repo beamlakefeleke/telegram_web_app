@@ -93,7 +93,7 @@ function App() {
           Back
         </div> */}
 
-        <div className="horizontal-card-list">
+        <div className="vertical-card-list">
           {cartItems.map((item, index) => (
             <div className="cards" key={index}>
               <img src={item.Image} alt={item.title} className="card-image" />

@@ -46,7 +46,7 @@ body{
   background-color: var(--tg-theme-bg-color);
 }
 .card-details{
-  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .card-image {
