@@ -89,8 +89,8 @@ function App() {
       <h1 className="heading">Order Food</h1>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
       {
-        cartItems.map((dat)=>{
-           <Card food={dat} key={dat.id} onAdd={onAdd} onRemove={onRemove} />
+        cartItems.map((dat) => {
+        return  <h1>wlllll</h1>
         })
       }
         
