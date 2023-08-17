@@ -45,6 +45,9 @@ body{
   padding: 5px 20px 5px 14px;
   background-color: var(--tg-theme-bg-color);
 }
+.card-details{
+  padding-left: 100px;
+}
 
 .card-image {
   text-align: center;
