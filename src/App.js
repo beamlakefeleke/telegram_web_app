@@ -21,8 +21,8 @@ function App() {
   useEffect(() => {
     tele.ready();
   });
- 
-  
+
+
   const onAdd = (food) => {
     const exist = cartItems.find((x) => x.id === food.id);
     if (exist) {
@@ -35,17 +35,17 @@ function App() {
       setCartItems([...cartItems, { ...food, quantity: 1 }]);
     }
 
-  
+
     tele.MainButton.text = "view Order";
-    tele.MainButton.show().onClick(()=>{
-      document.getElementById("section1").style.display="none";
+    tele.MainButton.show().onClick(() => {
+      document.getElementById("section1").style.display = "none";
       var section2 = document.getElementById("section2");
       section2.style.display = "flex";
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
       tele.MainButton.hide();
 
-     });
+    });
     //user id 838671675
 
   };
@@ -72,11 +72,11 @@ function App() {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show();
   };
-    
+
   return (
     <>
 
-      
+
       <div className="cards__container" id="section1">
         {foods.map((food) => {
           return (
@@ -84,18 +84,28 @@ function App() {
           );
         })}
       </div>
-      
+
       <div className="section2" id="section2"  >
-      <h1 className="heading">Order Food</h1>
-      <Cart cartItems={cartItems} onCheckout={onCheckout}/>
-      {
+        <h1 className="heading">Order Food</h1>
+        <Cart cartItems={cartItems} onCheckout={onCheckout} />
+        {/* {
         cartItems.map((dat) => {
         return  <h1>wlllll</h1>
         })
-      }
-        
-       <h1 className="heading">Order Food</h1>
-      {/* {foods.map((food) => {
+      } */}
+        <div className="horizontal-card-list">
+          {cartItems.map((item, index) => (
+            <div className="card" key={index}>
+              {/* You can put your card content here */}
+              <h1>{item.title}</h1>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+
+        <h1 className="heading">Order Food</h1>
+        {/* {foods.map((food) => {
          
         })} */}
       </div>

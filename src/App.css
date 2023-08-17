@@ -15,3 +15,15 @@ body{
 #section2{
   display: none;
 }
+.horizontal-card-list {
+  display: flex;
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  gap: 20px; /* Gap between cards */
+}
+
+.card {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
