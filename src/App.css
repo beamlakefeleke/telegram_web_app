@@ -44,7 +44,7 @@ body{
   width: 100%;
   flex-direction: column;
   border: 1px solid #ccc;
-  display: none;
+  
   padding: 5px 20px 5px 14px;
   background-color: var(--tg-theme-bg-color);
 }
