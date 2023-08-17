@@ -88,6 +88,7 @@ function App() {
       <div className="section2" id="section2"  >
       <h1 className="heading">Order Food</h1>
       <Cart cartItems={cartItems} onCheckout={onCheckout}/>
+       <h1 className="heading">Order Food</h1>
       {/* {foods.map((food) => {
          
         })} */}
