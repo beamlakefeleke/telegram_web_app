@@ -62,6 +62,7 @@ function App() {
       );
     }
   };
+  
   // const list=(food)=>{
   // const exist = cartItems.find((x) => x.id === food.id);
   // if (exist.quantity === 1){
@@ -71,6 +72,11 @@ function App() {
   const onCheckout = () => {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show();
+    tele.BackButton.show().onClick(() => {
+      
+      document.activeElement && document.activeElement.blur();
+      document.getElementById("section2").style.display = "none";
+    });
   };
 
   return (
