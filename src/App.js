@@ -96,12 +96,12 @@ function App() {
         <div className="horizontal-card-list">
           {cartItems.map((item, index) => (
             <div className="cards" key={index}>
-              <img src={item.imageSrc} alt={item.title} className="card-image" />
+              <img src={item.Image} alt={item.title} className="card-image" />
               <div className="card-details">
                 <h2 className="card-title">{item.title}</h2>
                 <h2 className="card-title">{item.title}</h2>
-                <p className="card-price">${item.price}</p>
               </div>
+              <p className="card-price">${item.price}</p>
             </div>
           ))}
         </div>
