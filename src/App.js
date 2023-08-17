@@ -57,7 +57,7 @@ function App() {
           section1.style.justifyContent = "center";
           st=1;
             }
-          else{
+          if(st===1){
               tele.WebApp.close();
             }
         });
