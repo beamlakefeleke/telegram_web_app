@@ -95,10 +95,10 @@ function App() {
       } */}
         <div className="horizontal-card-list">
           {cartItems.map((item, index) => (
-            <div className="card" key={index}>
+            <div className="cards" key={index}>
               {/* You can put your card content here */}
               <h1>{item.title}</h1>
-              <p>{item.description}</p>
+              <p>{item.price}</p>
             </div>
           ))}
         </div>
