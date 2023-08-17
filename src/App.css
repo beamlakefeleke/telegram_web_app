@@ -16,7 +16,7 @@ body{
 
 .section2 {
   width: 100%;
-  display: flex;
+  display: none;
 }
 
 .heading {
@@ -31,20 +31,17 @@ body{
 .vertical-card-list {
   width: 50%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));
   gap: 20px;
-  max-height: 40px; /* Add a maximum height for vertical scrolling */
+  max-height: 400px; /* Add a maximum height for vertical scrolling */
   overflow-y: scroll;
   padding: 10px 0;
 }
 
 .cards {
-
-  height: 30px;
-  width: 100%;
-  flex-direction: column;
+  display: flex; /* Adjust to display flex */
+  align-items: center; /* Center content vertically */
+  height: 100px; /* Adjust height as needed */
   border: 1px solid #ccc;
-  
   padding: 5px 20px 5px 14px;
   background-color: var(--tg-theme-bg-color);
 }
