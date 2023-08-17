@@ -44,19 +44,25 @@ function App() {
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
       tele.MainButton.hide();
-      // if (document.getElementById("section2")===true) {
-        tele.BackButton.show().onClick(() => {
+      
+      var st=0;
+          tele.BackButton.show().onClick(() => {
+          
+          if (st===0) {
           document.activeElement && document.activeElement.blur();
           document.getElementById("section2").style.display = "none";
           var section1 = document.getElementById("section1");
           section1.style.display = "flex";
           section1.style.flexWrap = "wrap";
           section1.style.justifyContent = "center";
+          st=1;
+            }
+          else{
+              tele.WebApp.close();
+            }
         });
-      // }
-      // else{
-      //   tele.WebApp.close();
-      // }
+      
+      
 
     });
     //user id 838671675
