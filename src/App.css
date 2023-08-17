@@ -46,7 +46,7 @@ body{
   background-color: var(--tg-theme-bg-color);
 }
 .card-details{
-  padding-right: 100px;
+  padding-right: 130px;
 }
 
 .card-image {
@@ -72,7 +72,6 @@ body{
   line-height: 17px;
   font-weight: 500;
   padding: 4px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
+  
+  justify-content: flex-end; 
 }

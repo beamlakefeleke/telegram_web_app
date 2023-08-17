@@ -98,7 +98,7 @@ function App() {
             <div className="cards" key={index}>
               <img src={item.Image} alt={item.title} className="card-image" />
               <div className="card-details">
-                <h2 className="card-title">{item.title}</h2>
+                {/* <h2 className="card-title">{item.title}</h2> */}
                 <h2 className="card-title">{item.title}</h2>
               </div>
               <p className="card-price">${item.price}</p>
