@@ -76,6 +76,10 @@ function App() {
       
       document.activeElement && document.activeElement.blur();
       document.getElementById("section2").style.display = "none";
+      var section1 = document.getElementById("section1");
+      section1.style.display = "flex";
+      section1.style.flexWrap = "wrap";
+      section1.style.justifyContent = "center";
     });
   };
 
