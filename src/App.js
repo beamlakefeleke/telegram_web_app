@@ -44,6 +44,19 @@ function App() {
       section2.style.flexWrap = "wrap";
       section2.style.justifyContent = "center";
       tele.MainButton.hide();
+      // if (document.getElementById("section2")===true) {
+        tele.BackButton.show().onClick(() => {
+          document.activeElement && document.activeElement.blur();
+          document.getElementById("section2").style.display = "none";
+          var section1 = document.getElementById("section1");
+          section1.style.display = "flex";
+          section1.style.flexWrap = "wrap";
+          section1.style.justifyContent = "center";
+        });
+      // }
+      // else{
+      //   tele.WebApp.close();
+      // }
 
     });
     //user id 838671675
@@ -73,19 +86,7 @@ function App() {
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show().onClick(()=>{
       
-      // if (document.getElementById("section2")===true) {
-        tele.BackButton.show().onClick(() => {
-          document.activeElement && document.activeElement.blur();
-          document.getElementById("section2").style.display = "none";
-          var section1 = document.getElementById("section1");
-          section1.style.display = "flex";
-          section1.style.flexWrap = "wrap";
-          section1.style.justifyContent = "center";
-        });
-      // }
-      // else{
-      //   tele.WebApp.close();
-      // }
+      
     });
     
   };
