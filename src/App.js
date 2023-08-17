@@ -85,25 +85,24 @@ function App() {
         })}
       </div>
 
-      <div className="section2" id="section2"  >
+      <div className="section2" id="section2">
         <h1 className="heading">Order Food</h1>
         <Cart cartItems={cartItems} onCheckout={onCheckout} />
-        {/* {
-        cartItems.map((dat) => {
-        return  <h1>wlllll</h1>
-        })
-      } */}
+
         <div className="horizontal-card-list">
           {cartItems.map((item, index) => (
-            <div className="cards" key={index}>
-              {/* You can put your card content here */}
-              <h1>{item.title}</h1>
-              <p>{item.price}</p>
+            <div className="card" key={index}>
+              <img src={item.imageSrc} alt={item.title} className="card-image" />
+              <div className="card-details">
+                <h2 className="card-title">{item.title}</h2>
+                <h2 className="card-title">{item.title}</h2>
+                <p className="card-price">${item.price}</p>
+              </div>
             </div>
           ))}
         </div>
-      
       </div>
+
     </>
   );
 }

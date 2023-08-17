@@ -12,19 +12,47 @@ body{
 .heading{
   text-align: center;
 }
-#section2{
-  display: none;
-}
-.horizontal-card-list {
-  display: flex;
-  overflow-y: scroll; /* Enable horizontal scrolling */
-  gap: 20px; /* Gap between cards */
+
+.section2 {
+  padding: 20px;
 }
 
-.cards {
-  width: 100%;
-  height: 30px;
-  border: 1px solid var(--tg-theme-bg-color);
+.heading {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.horizontal-card-list {
+  display: flex;
+  overflow-y: scroll;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  border: 1px solid #ccc;
   padding: 10px;
-  background-color: var(--tg-theme-bg-color);
+  background-color: #e7aeae;
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-description {
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-weight: bold;
 }
