@@ -41,7 +41,7 @@ body{
   display: flex; /* Adjust to display flex */
   align-items: center; /* Center content vertically */
   height: 100px; /* Adjust height as needed */
-  border: 1px solid #ccc;
+  
   padding: 5px 20px 5px 14px;
   background-color: var(--tg-theme-bg-color);
 }
