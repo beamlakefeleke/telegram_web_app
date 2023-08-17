@@ -86,12 +86,12 @@ function App() {
       </div>
 
       <div className="section2" id="section2">
-        <h1 className="heading">Order Food</h1>
-        <Cart cartItems={cartItems} onCheckout={onCheckout} />
-        <div className="arrow-back">
-          <span className="back-arrow">&#8592;</span> {/* Unicode arrow character */}
+        {/* <h1 className="heading">Order Food</h1> */}
+        {/* <Cart cartItems={cartItems} onCheckout={onCheckout} /> */}
+        {/* <div className="arrow-back">
+          <span className="back-arrow">&#8592;</span> 
           Back
-        </div>
+        </div> */}
 
         <div className="horizontal-card-list">
           {cartItems.map((item, index) => (
