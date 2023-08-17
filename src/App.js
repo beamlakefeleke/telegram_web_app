@@ -102,12 +102,7 @@ function App() {
             </div>
           ))}
         </div>
-
-
-        <h1 className="heading">Order Food</h1>
-        {/* {foods.map((food) => {
-         
-        })} */}
+      
       </div>
     </>
   );
