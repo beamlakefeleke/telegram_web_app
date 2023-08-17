@@ -1,6 +1,6 @@
 body{
   background-color: var(--tg-theme-bg-color);
-  color: #fff;
+  color: var(--tg-theme-bg-color);
 }
 
 #section1{
@@ -19,7 +19,7 @@ body{
 }
 .section2 {
   padding: 20px;
-  display: none;
+  display: flex;
 }
 
 .heading {
@@ -28,6 +28,7 @@ body{
 }
 
 .vertical-card-list {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
@@ -38,10 +39,12 @@ body{
 
 .cards {
   display: flex;
+  width:100px;
+  max-height: max-content;
   flex-direction: column;
   border: 1px solid #ccc;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--tg-theme-bg-color);
 }
 
 .card-image {
@@ -61,5 +64,5 @@ body{
 }
 
 .card-price {
-  font-weight: bold;
+  font-size: small;
 }
