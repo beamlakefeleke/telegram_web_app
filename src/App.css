@@ -74,3 +74,30 @@ body{
   
    
 }
+.comment-input {
+  margin: 20px 0;
+}
+
+.comment-input label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.comment-textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #fff;
+  color: #000;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: var(--tg-theme-color);
+}
+

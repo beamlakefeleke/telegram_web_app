@@ -90,12 +90,13 @@ function App() {
   // }
   // }
   const onCheckout = () => {
+    
     tele.MainButton.text = "Pay :)";
     tele.MainButton.show().onClick(()=>{
       
       
     });
-    
+  
   };
 
   
@@ -128,6 +129,18 @@ function App() {
             </div>
           ))}
         </div>
+        {/* Comment Input Box */}
+<div className="comment-input">
+  <label htmlFor="comment">Add Comment:</label>
+  <textarea
+    id="comment"
+    className="comment-textarea"
+    rows="4"
+    placeholder="Enter your comment here..."
+   
+  ></textarea>
+</div>
+
       </div>
 
     </>
