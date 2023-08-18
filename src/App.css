@@ -31,8 +31,7 @@ body{
 .vertical-card-list {
   width: 100%;
   display: grid;
-
-  max-height: 400px; /* Add a maximum height for vertical scrolling */
+  max-height: 300px; /* Add a maximum height for vertical scrolling */
   overflow-y: scroll;
   
 }
@@ -40,7 +39,7 @@ body{
 .cards {
   display: flex; /* Adjust to display flex */
   align-items: center; /* Center content vertically */
-  height: 70px; /* Adjust height as needed */
+  height: 50px; /* Adjust height as needed */
   
   padding: 5px 20px 5px 14px;
   background-color: var(--tg-theme-bg-color);

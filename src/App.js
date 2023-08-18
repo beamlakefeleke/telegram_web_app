@@ -46,8 +46,8 @@ function App() {
       tele.MainButton.hide();
       
       var st=0;
-          tele.BackButton.show().onClick(() => {
-          
+      tele.BackButton.show().onClick(() => {
+        
           if (st===0) {
           document.activeElement && document.activeElement.blur();
           document.getElementById("section2").style.display = "none";
@@ -59,9 +59,9 @@ function App() {
           st=1;
             }
           if(st===1){
-              tele.WebApp.close();
+              tele.BackButton.hide();
             }
-        }).isVisible=false;
+        });
       
       
 
@@ -115,11 +115,7 @@ function App() {
       <div className="section2" id="section2">
         <h1 className="heading">Order Food</h1>
         <Cart cartItems={cartItems} onCheckout={onCheckout} />
-        {/* <div className="arrow-back">
-          <span className="back-arrow">&#8592;</span> 
-          Back
-        </div> */}
-
+       
         <div className="vertical-card-list">
           {cartItems.map((item, index) => (
             <div className="cards" key={index}>
