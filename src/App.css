@@ -86,14 +86,13 @@ body{
 
 .comment-textarea {
   width: 100%;
-  padding: 8px;
+  padding: 0;
   font-size: 14px;
-  line-height: 18px;
   
   border-radius: 4px;
   resize: vertical;
   background-color: var(--tg-theme-color);;
-  color: #000;
+  color: whitesmoke;
 }
 
 .comment-textarea:focus {
