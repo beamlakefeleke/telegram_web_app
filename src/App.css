@@ -87,19 +87,23 @@ body{
 }
 
 .comment-textarea {
-  width: 100%;
-  /* padding: 0; */
   
-  font-size: 14px;
-  /* border-radius: 4px; */
-  resize: vertical;
-  background-color: var(--tg-theme-color);;
-  color: whitesmoke;
+  font-size: 17px;
+  line-height: 21px;
+  -webkit-font-smoothing: antialiased;
+  /* padding: 12px 20px 13px; */
+  box-sizing: border-box;
+  display: block;
   outline: none;
+  border: none;
+  border-radius: 0;
+  resize: none;
+  color: white;
+  -webkit-user-select: auto;
+  user-select: auto;
+  cursor: auto;
+  width: 100%;
 }
 
-.comment-textarea:focus {
-  outline: none;
-  /* border-color: var(--tg-theme-color); */
-}
+
 
