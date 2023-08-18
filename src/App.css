@@ -15,8 +15,8 @@ body{
 
 
 .section2 {
-  width: 100%;
-  display: flex;
+  /* width: 100%; */
+  display: none;
 }
 
 .heading {
@@ -75,7 +75,7 @@ body{
    
 }
 .comment-input {
-  margin: 20px 0;
+  margin: 0;
 }
 
 .comment-input label {
@@ -89,10 +89,10 @@ body{
   padding: 8px;
   font-size: 14px;
   line-height: 18px;
-  border: 1px solid #ccc;
+  
   border-radius: 4px;
   resize: vertical;
-  background-color: #fff;
+  background-color: var(--tg-theme-color);;
   color: #000;
 }
 
