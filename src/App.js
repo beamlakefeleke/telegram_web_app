@@ -43,9 +43,10 @@ document.addEventListener('TelegramWebAppLoaded', function () {
   // Get the background color of the document's body
   var style = window.getComputedStyle(document.body);
   var bg_color = parseColorToHex(style.backgroundColor || '#fff');
-
+  var text_color = '#fff';
   // Set the background color for the Telegram WebApp
   tele.setBackgroundColor(bg_color);
+  tele.setTextColor(text_color);
 });
 }
 // Call the function when your script is loaded (optional)
