@@ -8,7 +8,7 @@ bot.start((ctx) =>
   ctx.reply("Let's get started 🍟\n\n Please tap the button below to order your food", {
     reply_markup: {
       inline_keyboard: [[{ text: "Order Food", web_app: { url: web_link } }]],
-      
+      menu_button :[[{ text: "view", web_app: { url: web_link } }]],
       keyboard_button: [[{ text: "Durger", web_app: { url: web_link } }]],
 
     },

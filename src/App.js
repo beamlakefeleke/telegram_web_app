@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+// import "./vendor.css";
 import "./App.css";
 // import List from "./List";
 import Card from "./Components/Card/Card";
@@ -14,6 +14,43 @@ const foods = getData();
 // const cafes = getCafe();
 
 const tele = window.Telegram.WebApp;
+
+function updateTelegramtheme() {
+
+
+function parseColorToHex(color) {
+  color += '';
+  var match;
+  if (match = /^\s*#([0-9a-f]{6})\s*$/i.exec(color)) {
+    return '#' + match[1].toLowerCase();
+  }
+  else if (match = /^\s*#([0-9a-f])([0-9a-f])([0-9a-f])\s*$/i.exec(color)) {
+    return ('#' + match[1] + match[1] + match[2] + match[2] + match[3] + match[3]).toLowerCase();
+  }
+  else if (match = /^\s*rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+\.{0,1}\d*))?\)\s*$/.exec(color)) {
+    var r = parseInt(match[1]), g = parseInt(match[2]), b = parseInt(match[3]);
+    r = (r < 16 ? '0' : '') + r.toString(16);
+    g = (g < 16 ? '0' : '') + g.toString(16);
+    b = (b < 16 ? '0' : '') + b.toString(16);
+    return '#' + r + g + b;
+  }
+  return false;
+}
+
+
+// Wait for the Telegram WebApp to be ready
+document.addEventListener('TelegramWebAppLoaded', function () {
+  // Get the background color of the document's body
+  var style = window.getComputedStyle(document.body);
+  var bg_color = parseColorToHex(style.backgroundColor || '#fff');
+
+  // Set the background color for the Telegram WebApp
+  tele.setBackgroundColor(bg_color);
+});
+}
+// Call the function when your script is loaded (optional)
+updateTelegramtheme();
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
