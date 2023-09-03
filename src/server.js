@@ -1,11 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mysql = require("mysql2");
+const cors = require("cors"); // Add CORS middleware to handle cross-origin requests
 
 const app = express();
 const port = 3000; // Change this to your desired port
 
-// Middleware to parse JSON requests
+app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
 
 // MySQL Connection Pool
@@ -32,6 +33,8 @@ app.post("/registerVendor", (req, res) => {
     }
   });
 });
+
+// ... Add more routes for handling product-related requests here
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

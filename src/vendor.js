@@ -3,25 +3,36 @@ import "./vendor.css";
 import axios from "axios";
 
 function App() {
+  
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productList, setProductList] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
+  const [productImage, setProductImage] = useState(null);
 
   const [vendorName, setVendorName] = useState("");
   const [vendorEmail, setVendorEmail] = useState("");
   const [vendorPassword, setVendorPassword] = useState("");
+  
+
 
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", productName);
+    formData.append("price", productPrice);
+    formData.append("description", productDescription);
+    formData.append("image", productImage);
 
     if (editIndex === null) {
       // Create a new product object
       const newProduct = {
         name: productName,
         price: productPrice,
+        image: productImage,
         description: productDescription,
       };
 
@@ -33,6 +44,7 @@ function App() {
       updatedProductList[editIndex] = {
         name: productName,
         price: productPrice,
+        image: productImage,
         description: productDescription,
       };
       setProductList(updatedProductList);
@@ -42,6 +54,7 @@ function App() {
     // Clear form fields
     setProductName("");
     setProductPrice("");
+    setProductImage("");
     setProductDescription("");
   };
 
@@ -50,6 +63,7 @@ function App() {
     const productToEdit = productList[index];
     setProductName(productToEdit.name);
     setProductPrice(productToEdit.price);
+    setProductImage(productToEdit.image);
     setProductDescription(productToEdit.description);
     setEditIndex(index);
   };
@@ -65,6 +79,7 @@ function App() {
   const handleCancelClick = () => {
     setProductName("");
     setProductPrice("");
+    setProductImage("");
     setProductDescription("");
     setEditIndex(null);
   };
@@ -79,9 +94,13 @@ function App() {
     };
   
     try {
-      const response = await axios.post("/registerVendor", newVendor);
+      const response = await axios.post("http://localhost:3000/registerVendor", newVendor);
+      // const response = await axios.post("/registerVendor", newVendor);
       console.log(response.data); // Successful registration message
       // Clear form fields or redirect as needed
+      setVendorName("");
+      setVendorEmail("");
+      setVendorPassword("");
     } catch (error) {
       console.error(error);
       // Handle registration error (e.g., display an error message to the user)
@@ -154,6 +173,22 @@ function App() {
           required
         />
         <br />
+        <label htmlFor="productImage">Product Image:</label>
+        <input type="file"
+        id="productImage"
+        accept="image/*" // Allow only image files
+        onChange={(e) => setProductImage(e.target.files[0])}
+        required
+        />
+        <br />
+        {productImage && (
+            <img  
+            src={URL.createObjectURL(productImage)}
+            alt="Product Preview"
+            width="150"
+            height="150"
+            />
+            )}
 
         <label htmlFor="productDescription">Description:</label>
         <textarea
@@ -181,10 +216,17 @@ function App() {
       <ul>
         {productList.map((product, index) => (
           <li key={index}>
+            <img
+            src={product.image} // Display the product image
+            alt= {`Product ${index}`}
+            
+            />
             <strong>{product.name}</strong> - ${product.price}
             <br />
             {product.description}
             <br />
+            
+
             <button
               className="edit-button" // Add a class for styling
               onClick={() => handleEditClick(index)}
