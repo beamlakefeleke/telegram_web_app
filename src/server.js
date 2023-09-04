@@ -7,6 +7,7 @@ const app = express();
 const port = 3000; // Change this to your desired port
 
 app.use(cors()); // Enable CORS for all routes
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // MySQL Connection Pool
@@ -35,6 +36,23 @@ app.post("/registerVendor", (req, res) => {
 });
 
 // ... Add more routes for handling product-related requests here
+app.post("/addProduct", (req, res) => {
+  const { name, price, description, image } = req.body;
+
+  // Insert the product into the database
+  const sql = "INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)";
+  const values = [name, price, description, image];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ message: "Error adding the product to the database." });
+    } else {
+      console.log("Product added to the database.");
+      res.status(200).json({ message: "Product added to the database successfully." });
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -18,7 +18,7 @@ function App() {
 
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
@@ -35,6 +35,14 @@ function App() {
         image: productImage,
         description: productDescription,
       };
+      try {
+        const response = await axios.post("http://localhost:3000/addProduct", newProduct);
+        console.log(response.data); // Successful product addition message
+        // Clear form fields as needed
+      } catch (error) {
+        console.error(error);
+        // Handle product addition error
+      }
 
       // Add the new product to the product list
       setProductList([...productList, newProduct]);
@@ -109,6 +117,7 @@ function App() {
     setVendorEmail("");
     setVendorPassword("");
   };
+  
 
 
   useEffect(() => {
