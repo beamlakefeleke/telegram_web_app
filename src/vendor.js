@@ -1,20 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "./vendor.css";
 import axios from "axios";
+//const PORT = process.env.PORT || 3000;
+
+import { useDropzone } from 'react-dropzone';
+
+
 
 function App() {
-  
+
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productList, setProductList] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [productImage, setProductImage] = useState(null);
+  const [vendorPhone, setVendorPhone] = useState("");
 
   const [vendorName, setVendorName] = useState("");
   const [vendorEmail, setVendorEmail] = useState("");
-  const [vendorPassword, setVendorPassword] = useState("");
-  
+  // const [vendorPassword, setVendorPassword] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const onDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    setSelectedImage(URL.createObjectURL(file));
+    console.log(selectedImage);
+    console.log("selectedImage");
+
+
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/*',
+  });
+
+
 
 
   // Function to handle form submission
@@ -32,11 +54,17 @@ function App() {
       const newProduct = {
         name: productName,
         price: productPrice,
-        image: productImage,
-        description: productDescription,
+        disc: productDescription,
+        image: selectedImage,
+        owner: "nathan",
+        approved: "1",
+        link: "elev-8",
+        data_created: "1/11/1111",
+
       };
       try {
-        const response = await axios.post("http://localhost:3000/addProduct", newProduct);
+        // const response = await axios.post("http://localhost:3000/addProduct", newProduct);
+        const response = await axios.post("https://negari.marketing/api/product/", newProduct);
         console.log(response.data); // Successful product addition message
         // Clear form fields as needed
       } catch (error) {
@@ -91,33 +119,39 @@ function App() {
     setProductDescription("");
     setEditIndex(null);
   };
-   // Function to handle vendor registration form submission
+  // Function to handle vendor registration form submission
   const handleVendorRegistration = async (e) => {
     e.preventDefault();
-  
+
     const newVendor = {
-      name: vendorName,
+      campany: vendorName,
       email: vendorEmail,
-      password: vendorPassword,
+      phone: vendorPhone,
+      telegramid: "rtrtr",
+      status: "sta",
+      postlimit: 456789,
+      datecreated: "1/3/3343",
     };
-  
+
+
     try {
-      const response = await axios.post("http://localhost:3000/registerVendor", newVendor);
+      const response = await axios.post(
+        "https://negari.marketing/api/vendor/", newVendor);
       // const response = await axios.post("/registerVendor", newVendor);
       console.log(response.data); // Successful registration message
       // Clear form fields or redirect as needed
       setVendorName("");
       setVendorEmail("");
-      setVendorPassword("");
+      setVendorPhone("");
     } catch (error) {
       console.error(error);
       // Handle registration error (e.g., display an error message to the user)
     }
     setVendorName("");
     setVendorEmail("");
-    setVendorPassword("");
+    setVendorPhone("");
   };
-  
+
 
 
   useEffect(() => {
@@ -126,7 +160,7 @@ function App() {
 
   return (
     <div className="container">
-       <h1>Vendor Registration</h1>
+      <h1>Vendor Registration</h1>
       <form onSubmit={handleVendorRegistration}>
         <label htmlFor="vendorName">Vendor Name:</label>
         <input
@@ -147,13 +181,14 @@ function App() {
           required
         />
         <br />
+      
 
-        <label htmlFor="vendorPassword">Password:</label>
+        <label htmlFor="vendorPhone">Phone Number:</label>
         <input
-          type="password"
-          id="vendorPassword"
-          value={vendorPassword}
-          onChange={(e) => setVendorPassword(e.target.value)}
+          type="text"
+          id="vendorPhone"
+          value={vendorPhone}
+          onChange={(e) => setVendorPhone(e.target.value)}
           required
         />
         <br />
@@ -182,22 +217,37 @@ function App() {
           required
         />
         <br />
-        <label htmlFor="productImage">Product Image:</label>
+        {/* <label htmlFor="productImage">Product Image:</label>
         <input type="file"
-        id="productImage"
-        accept="image/*" // Allow only image files
-        onChange={(e) => setProductImage(e.target.files[0])}
-        required
+          id="productImage"
+          accept="image/*" // Allow only image files
+          onChange={(e) => setProductImage(e.target.files[0])}
+          required
         />
-        <br />
-        {productImage && (
-            <img  
+
+        <br /> */}
+
+        {/* {productImage && (
+          <img
             src={URL.createObjectURL(productImage)}
             alt="Product Preview"
             width="150"
             height="150"
-            />
-            )}
+          />
+        )} */}
+          <div>
+          <div {...getRootProps()} style={dropzoneStyles}>
+            <input {...getInputProps()} />
+            <p>Drag and drop an image file here, or click to select one</p>
+          </div>
+          {selectedImage && (
+            <div>
+              <p>Selected Image File Path:</p>
+              <p>{selectedImage}</p>
+              <img src={selectedImage} alt="Selected" style={imageStyles} />
+            </div>
+          )}
+        </div>
 
         <label htmlFor="productDescription">Description:</label>
         <textarea
@@ -226,15 +276,15 @@ function App() {
         {productList.map((product, index) => (
           <li key={index}>
             <img
-            src={product.image} // Display the product image
-            alt= {`Product ${index}`}
-            
+              src={product.image} // Display the product image
+              alt={`Product ${index}`}
+
             />
             <strong>{product.name}</strong> - ${product.price}
             <br />
             {product.description}
             <br />
-            
+
 
             <button
               className="edit-button" // Add a class for styling
@@ -254,5 +304,17 @@ function App() {
     </div>
   );
 }
+const dropzoneStyles = {
+  border: '2px dashed #cccccc',
+  borderRadius: '4px',
+  padding: '20px',
+  textAlign: 'center',
+  cursor: 'pointer',
+};
+
+const imageStyles = {
+  maxWidth: '100%',
+  maxHeight: '200px',
+};
 
 export default App;
